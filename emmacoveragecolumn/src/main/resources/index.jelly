@@ -1,6 +1,0 @@
-<!--
-  This view is used to render the installed plugins page.
--->
-<div>
-  Provides a column to display line coverage based on EMMA.
-</div>
