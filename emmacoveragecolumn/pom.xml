@@ -33,7 +33,7 @@
 	</dependencies>
 
 	<!-- get every artifact through maven.glassfish.org, which proxies all the 
-		artifacts that we need -->
+		artifacts that we need  -->
 	<repositories>
 		<repository>
 			<id>m.g.o-public</id>
