@@ -57,10 +57,19 @@ public class EmmaColumn extends ListViewColumn {
 		return CoverageRange.colorAsHexString(c);
 	}
 
-	public BigDecimal getLineCoverage(final Job<?, ?> job) {
+	public String getLineCoverage(final Job<?, ?> job) {
 		final Run<?, ?> lastSuccessfulBuild = job.getLastSuccessfulBuild();
-		return BigDecimal.valueOf(getLinePercent(lastSuccessfulBuild)
-				.doubleValue());
+		final StringBuilder stringBuilder = new StringBuilder();
+
+		if (lastSuccessfulBuild == null
+				|| lastSuccessfulBuild.getAction(EmmaBuildAction.class) == null) {
+			stringBuilder.append("N/A");
+		} else {
+			final Double percent = getLinePercent(lastSuccessfulBuild);
+			stringBuilder.append(percent);
+		}
+
+		return stringBuilder.toString();
 	}
 
 	private Double getLinePercent(final Run<?, ?> lastSuccessfulBuild) {
